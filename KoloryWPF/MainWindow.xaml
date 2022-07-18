@@ -1,0 +1,25 @@
+﻿<Window x:Class="KoloryWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KoloryWPF"
+        xmlns:vm="clr-namespace:KoloryWPF.ModelWidoku"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        KeyDown="Window_KeyDown"
+        Closed="Window_Closed">
+    <Window.Resources>
+        <vm:EdycjaKoloru x:Key="edycjaKoloru"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource edycjaKoloru}">
+        <Rectangle Margin="10,10,10,217" Stroke="Black" x:Name="rectangle">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="{Binding Path=Color, Mode=OneWay}"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Slider x:Name="sliderR" Margin="10,0,10,182" VerticalAlignment="Bottom" Maximum="255" Value="{Binding R, Mode=TwoWay}"/>
+        <Slider x:Name="sliderG" Margin="10,0,10,159" VerticalAlignment="Bottom" Maximum="255" Value="{Binding G, Mode=TwoWay}"/>
+        <Slider x:Name="sliderB" Margin="10,0,10,136" VerticalAlignment="Bottom" Maximum="255" Value="{Binding B, Mode=TwoWay}"/>
+    </Grid>
+</Window>
