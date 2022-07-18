@@ -11,15 +11,27 @@
         Closed="Window_Closed">
     <Window.Resources>
         <vm:EdycjaKoloru x:Key="edycjaKoloru"/>
+        <local:ByteToDoubleConverter x:Key="konwersjaByteDouble"/>
+        <local:ColorToSolidColorBrushConverter x:Key="konwersjaColorBrush"/>
+        <local:SkladoweRGBToSolidColorBrushConverter x:Key="konwersjaRGBBrush"/>
+        <local:SkladoweRGBDoubleToSolidColorBrushConverter x:Key="konwersjaRGBDoubleBrush"/>
+
     </Window.Resources>
     <Grid DataContext="{StaticResource edycjaKoloru}">
         <Rectangle Margin="10,10,10,217" Stroke="Black" x:Name="rectangle">
             <Rectangle.Fill>
-                <SolidColorBrush Color="{Binding Path=Color, Mode=OneWay}"/>
+                <MultiBinding Mode="OneWay" Converter="{StaticResource konwersjaRGBDoubleBrush}">
+                    <Binding ElementName="sliderR" Path="Value"/>
+                    <Binding ElementName="sliderG" Path="Value"/>
+                    <Binding ElementName="sliderB" Path="Value"/>
+                </MultiBinding>
             </Rectangle.Fill>
         </Rectangle>
-        <Slider x:Name="sliderR" Margin="10,0,10,182" VerticalAlignment="Bottom" Maximum="255" Value="{Binding R, Mode=TwoWay}"/>
-        <Slider x:Name="sliderG" Margin="10,0,10,159" VerticalAlignment="Bottom" Maximum="255" Value="{Binding G, Mode=TwoWay}"/>
-        <Slider x:Name="sliderB" Margin="10,0,10,136" VerticalAlignment="Bottom" Maximum="255" Value="{Binding B, Mode=TwoWay}"/>
+        <Slider x:Name="sliderR" Margin="10,0,82,182" VerticalAlignment="Bottom" Maximum="255" Value="{Binding R, Mode=TwoWay, Converter={StaticResource konwersjaByteDouble}}"/>
+        <TextBlock Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,177" Text="{Binding ElementName=sliderR, Path=Value}"/>
+        <Slider x:Name="sliderG" Margin="10,0,82,159" VerticalAlignment="Bottom" Maximum="255" Value="{Binding G, Mode=TwoWay, Converter={StaticResource konwersjaByteDouble}}"/>
+        <TextBlock Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,154" Text="{Binding ElementName=sliderG, Path=Value}"/>
+        <Slider x:Name="sliderB" Margin="10,0,82,136" VerticalAlignment="Bottom" Maximum="255" Value="{Binding B, Mode=TwoWay, Converter={StaticResource konwersjaByteDouble}}"/>
+        <TextBlock Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,132" Text="{Binding ElementName=sliderB, Path=Value}"/>
     </Grid>
 </Window>
