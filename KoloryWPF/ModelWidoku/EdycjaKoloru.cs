@@ -8,6 +8,7 @@ namespace KoloryWPF.ModelWidoku
 {
     using Model;
     using System.ComponentModel;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     public class EdycjaKoloru : ObservedObject, IEdycjaKoloru 
@@ -22,6 +23,15 @@ namespace KoloryWPF.ModelWidoku
         //            PropertyChanged(this, new PropertyChangedEventArgs(nazwaWlasnosci));
         //        }
         //}
+        private ICommand resetujCommand;
+        public ICommand Resetuj
+        {
+            get
+            {
+                if (resetujCommand == null) resetujCommand = new ResetujCommand(this);
+                return resetujCommand;
+            }
+        }
         private readonly Kolor kolor = Ustawienia.Zapisane;
         public byte R { get { return kolor.R; } set { kolor.R = value; OnPropertyChanged("R", "Color"); } }
         public byte G { get { return kolor.G; } set { kolor.G = value; OnPropertyChanged("G", "Color"); } }
