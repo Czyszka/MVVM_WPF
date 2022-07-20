@@ -45,10 +45,10 @@ namespace KoloryWPF
         //    KolorProstokata = kolor;
         //}
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Escape) Close();
-        }
+        //private void Window_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if(e.Key == Key.Escape) Close();
+        //}
 
         //private void Window_Closed(object sender, EventArgs e)
         //{

@@ -54,6 +54,13 @@ namespace KoloryWPF.ModelWidoku
                 return zapiszCommand;
             }
         }
+        public ICommand ZamknijOkno
+        {
+            get
+            {
+                return new RelayCommand(argument => { (argument as System.Windows.Window)?.Close(); });
+            }
+        }
     }
     //static class Rozszerzenia
     //{
