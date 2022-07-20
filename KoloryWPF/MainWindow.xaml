@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:KoloryWPF"
         xmlns:vm="clr-namespace:KoloryWPF.ModelWidoku"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         KeyDown="Window_KeyDown"
-        Closed="Window_Closed">
+        >
     <Window.Resources>
         <vm:EdycjaKoloru x:Key="edycjaKoloru"/>
         <local:ByteToDoubleConverter x:Key="konwersjaByteDouble"/>
@@ -24,6 +25,11 @@
         <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding Resetuj}"/>
         <MouseBinding Gesture="Alt+MiddleClick" Command="{Binding Resetuj}"/>
     </Window.InputBindings>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding Zapisz}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid DataContext="{StaticResource edycjaKoloru}">
         <Rectangle Margin="10,10,10,217" Stroke="Black" x:Name="rectangle">
             <Rectangle.Fill>

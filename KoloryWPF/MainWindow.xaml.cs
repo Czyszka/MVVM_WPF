@@ -50,11 +50,11 @@ namespace KoloryWPF
             if(e.Key == Key.Escape) Close();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            //Ustawienia.Zapisane=new Kolor(KolorProstokata.R, KolorProstokata.G, KolorProstokata.B);
-            EdycjaKoloru edycjaKoloru = this.Resources["edycjaKoloru"] as EdycjaKoloru;
-            edycjaKoloru.Zapisz();
-        }
+        //private void Window_Closed(object sender, EventArgs e)
+        //{
+        //    //Ustawienia.Zapisane=new Kolor(KolorProstokata.R, KolorProstokata.G, KolorProstokata.B);
+        //    EdycjaKoloru edycjaKoloru = this.Resources["edycjaKoloru"] as EdycjaKoloru;
+        //    edycjaKoloru.Zapisz();
+        //}
     }
 }

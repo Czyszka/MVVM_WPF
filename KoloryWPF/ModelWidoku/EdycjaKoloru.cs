@@ -28,7 +28,8 @@ namespace KoloryWPF.ModelWidoku
         {
             get
             {
-                if (resetujCommand == null) resetujCommand = new ResetujCommand(this);
+                if (resetujCommand == null) resetujCommand = new RelayCommand(
+                    argument => { R = 0; G = 0; B = 0; }, argument => (R != 0) || (G != 0) || (B != 0));
                 return resetujCommand;
             }
         }
@@ -41,7 +42,18 @@ namespace KoloryWPF.ModelWidoku
         //{
         //    get { return kolor.ToColor(); }
         //}
-        public void Zapisz() => Ustawienia.Zapisane = kolor;
+        //public void Zapisz() => Ustawienia.Zapisane = kolor;
+        private ICommand zapiszCommand;
+        public ICommand Zapisz
+        {
+            get
+            {
+                if (zapiszCommand is null)
+                    zapiszCommand = new RelayCommand(
+                        argument => { Ustawienia.Zapisane=kolor; });
+                return zapiszCommand;
+            }
+        }
     }
     //static class Rozszerzenia
     //{
